@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>László Bence-Zsolt · Webfejlesztő</title>
+<meta name="description" content="Webfejlesztő portfólió: élesben futó ügyféloldalak, saját foglalórendszer, Shopify-webshop, látványtervek.">
+<meta property="og:title" content="László Bence-Zsolt · Webfejlesztő">
+<meta property="og:description" content="Élesben futó ügyféloldalak, saját foglalórendszer, Shopify-webshop.">
+<meta property="og:image" content="img/aphrodite-desk.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EFE8;--paper-2:#E9E5DC;--card:#fff;
+  --ink:#15140F;--ink-2:#4A463E;--ink-3:#6F695E;
+  --line:rgba(21,20,15,.14);--line-2:rgba(21,20,15,.08);
+  --accent:#2438D8;--accent-2:#1A2AAE;--accent-soft:rgba(36,56,216,.08);
+  --live:#0E7A4B;--live-soft:rgba(14,122,75,.1);
+  --maxw:1220px;--r:14px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:650;letter-spacing:-.025em;line-height:1.14;margin:0}
+p{margin:0}a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{width:min(100% - 44px,var(--maxw));margin-inline:auto}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(242,239,232,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.hdr-in{display:flex;align-items:center;gap:22px;height:66px}
+.brand{text-decoration:none;margin-right:auto;line-height:1.15}
+.brand b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:650;font-size:18px;letter-spacing:-.02em}
+.brand small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav{display:flex;gap:24px}
+.nav a{text-decoration:none;font-size:15px;color:var(--ink-2)}
+.nav a:hover{color:var(--accent)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px}
+.lang button{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;letter-spacing:.06em;padding:5px 10px;border-radius:99px;color:var(--ink-3)}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:99px;font-size:16px;font-weight:500;text-decoration:none;border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-2);transform:translateY(-2px);box-shadow:0 14px 28px -14px rgba(36,56,216,.8)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-sm{padding:10px 18px;font-size:14.5px}
+
+/* hero */
+.hero{padding:clamp(56px,8vw,104px) 0 clamp(40px,5vw,60px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--live);transform:translateZ(0);animation:blink 2.4s ease-in-out infinite}
+@keyframes blink{50%{opacity:.35}}
+h1{font-size:clamp(38px,6vw,74px);max-width:17ch;letter-spacing:-.035em}
+h1 em{font-style:normal;color:var(--accent)}
+.lead{margin-top:26px;font-size:clamp(18px,1.5vw,20.5px);color:var(--ink-2);max-width:62ch}
+.lead strong{color:var(--ink);font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:clamp(44px,6vw,70px);background:var(--line-2);border:1px solid var(--line-2);border-radius:var(--r);overflow:hidden}
+.stat{background:var(--paper);padding:22px}
+.stat b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:36px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat span{display:block;font-size:14px;color:var(--ink-3);margin-top:6px;line-height:1.4}
+
+/* sections */
+section{padding:clamp(60px,8vw,110px) 0}
+.sec-head{margin-bottom:clamp(36px,5vw,58px);max-width:760px}
+.sec-head .kick{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.sec-head h2{font-size:clamp(30px,4vw,48px);margin-top:12px}
+.sec-head p{margin-top:16px;color:var(--ink-2)}
+
+/* works */
+.works{display:flex;flex-direction:column;gap:clamp(56px,7vw,96px)}
+.work{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(28px,4vw,60px);align-items:center}
+.work:nth-child(even) .txt{order:2}
+.tag{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;border-radius:99px;font-size:12px;letter-spacing:.07em;text-transform:uppercase;font-weight:600}
+.tag.live{background:var(--live-soft);color:var(--live)}
+.tag.live::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.tag.concept{background:var(--accent-soft);color:var(--accent-2)}
+.txt h3{font-size:clamp(27px,3vw,38px);margin-top:16px}
+.txt .where{color:var(--ink-3);font-size:15px;margin-top:6px}
+.txt p.body{margin-top:18px;color:var(--ink-2);font-size:17px;max-width:54ch}
+.txt ul{margin:16px 0 0;padding-left:20px;color:var(--ink-2);font-size:16.5px}
+.txt li{margin-top:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chip{font-size:13px;padding:6px 12px;border-radius:99px;border:1px solid var(--line);color:var(--ink-2);background:rgba(255,255,255,.55)}
+.txt .btn{margin-top:24px}
+.shot{position:relative}
+.frame{border-radius:12px;overflow:hidden;background:var(--card);border:1px solid var(--line);box-shadow:0 34px 60px -34px rgba(21,20,15,.42)}
+.bar{display:flex;align-items:center;gap:7px;padding:9px 12px;background:var(--paper-2);border-bottom:1px solid var(--line-2)}
+.bar i{width:9px;height:9px;border-radius:50%;background:rgba(21,20,15,.16)}
+.bar .url{margin-left:8px;flex:1;background:#fff;border-radius:5px;padding:3px 10px;font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.phone{position:absolute;right:-14px;bottom:-26px;width:clamp(92px,15%,128px);border-radius:16px;overflow:hidden;border:4px solid #1b1a16;background:#000;box-shadow:0 22px 40px -18px rgba(21,20,15,.55)}
+.phone img{width:100%;aspect-ratio:9/19.5;object-fit:cover;object-position:top}
+.work:nth-child(even) .phone{right:auto;left:-14px}
+
+/* tools */
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tool{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.tool h4{font-size:21px}
+.tool p{margin-top:10px;font-size:16px;color:var(--ink-2)}
+.tool .chips{margin-top:16px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:var(--r);overflow:hidden}
+.sk{background:var(--paper);padding:24px 26px;display:grid;grid-template-columns:200px 1fr;gap:16px;align-items:baseline}
+.sk h4{font-size:17px}
+.sk p{font-size:16px;color:var(--ink-2)}
+
+/* how */
+.how{background:var(--ink);color:#EDEAE2;border-radius:var(--r);padding:clamp(36px,5vw,66px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,4vw,56px)}
+.how h2{color:#fff;font-size:clamp(28px,3.4vw,42px)}
+.how p{color:rgba(237,234,226,.82);font-size:17px}
+.how p+p{margin-top:14px}
+.how strong{color:#fff}
+
+/* contact */
+.contact{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,64px);align-items:start}
+.contact h2{font-size:clamp(32px,4.4vw,54px);max-width:15ch}
+.contact .lead{margin-top:20px}
+.ccard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 28px 30px;box-shadow:0 24px 46px -34px rgba(21,20,15,.3)}
+.crow{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line-2);align-items:baseline}
+.crow:last-of-type{border-bottom:0}
+.crow small{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.crow a,.crow span{font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600;text-decoration:none;overflow-wrap:anywhere}
+.crow a:hover{color:var(--accent)}
+.ccard .btn{width:100%;justify-content:center;margin-top:20px}
+
+footer{border-top:1px solid var(--line-2);padding:30px 0 44px}
+.foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;font-size:14.5px;color:var(--ink-3)}
+
+/* reveal (két irányba) */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.eyebrow .dot{animation:none}html{scroll-behavior:auto}}
+
+@media (max-width:1000px){
+  .work{grid-template-columns:1fr}
+  .work .txt,.work:nth-child(even) .txt{order:0}
+  .tools{grid-template-columns:1fr}
+  .skills{grid-template-columns:1fr}
+  .how,.contact{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  body{font-size:17px}
+  .nav,.hdr .btn-sm{display:none}
+  .phone{display:none}
+  .sk{grid-template-columns:1fr;gap:6px}
+  .cta{flex-direction:column;align-items:stretch}
+  .cta .btn{justify-content:center}
+  .crow{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:420px){.stat b{font-size:30px}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#top"><b>László Bence-Zsolt</b><small data-i18n="role">Webfejlesztő</small></a>
+    <nav class="nav">
+      <a href="#munkak" data-i18n="nav_work">Munkák</a>
+      <a href="#tudas" data-i18n="nav_skills">Tudás</a>
+      <a href="#kapcsolat" data-i18n="nav_contact">Kapcsolat</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Nyelv / Language">
+      <button type="button" data-lang="hu" aria-pressed="true">HU</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-primary btn-sm cv-link" href="cv/Laszlo-Bence-Zsolt-CV-HU.pdf" data-i18n="cv">Önéletrajz (PDF)</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow rv"><span class="dot"></span><span data-i18n="eyebrow">Munkát keresek · helyben vagy távmunkában</span></div>
+    <h1 class="rv" data-i18n-html="h1">Weboldalakat építek, amik <em>élesben futnak</em>, és fizető ügyfelek használják.</h1>
+    <p class="lead rv" data-i18n-html="lead">László Bence-Zsolt vagyok, webfejlesztő Hargita megyéből. Erdélyi kisvállalkozásoknak készítettem oldalakat a tervtől az élesítésig: dizájn, kód, többnyelvűség, foglalórendszer, webshop, domain és kereső. <strong>Most csapatot keresek, ügynökséget vagy céget, ahol ezt nagyobb projekteken csinálhatom.</strong></p>
+    <div class="cta rv">
+      <a class="btn btn-primary" href="#munkak"><span data-i18n="cta_work">Munkák megnézése</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+      <a class="btn btn-ghost cv-link" href="cv/Laszlo-Bence-Zsolt-CV-HU.pdf" data-i18n="cta_cv">Önéletrajz letöltése</a>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><b>3</b><span data-i18n="st1">ügyféloldal élesben, saját domainen</span></div>
+      <div class="stat"><b>60+</b><span data-i18n="st2">személyre szabott látványterv cégeknek</span></div>
+      <div class="stat"><b>3</b><span data-i18n="st3">nyelven készülnek az oldalaim: magyar, román, angol</span></div>
+      <div class="stat"><b>1</b><span data-i18n="st4">saját fejlesztésű foglalórendszer élesben</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="munkak">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick" data-i18n="w_kick">Munkák</div>
+      <h2 data-i18n="w_h">Három élő ügyféloldal és három koncepció</h2>
+      <p data-i18n="w_p">Mindegyik megnyitható és végigkattintható, telefonon is. A zöld címke valódi, kifizetett ügyfélmunkát jelöl, a kék látványtervet.</p>
+    </div>
+
+    <div class="works">
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag live" data-i18n="live">Élesben · ügyfélmunka</span>
+          <h3>Aphrodite Szépségszalon</h3>
+          <div class="where" data-i18n="aph_where">Székelyudvarhely · 5 szakember · HU + RO</div>
+          <p class="body" data-i18n="aph_p">Teljes szalonoldal saját online foglalóval. A foglaló a szakemberek Google Naptárára épül: aki beírja, mikor dolgozik, annál magától megnyílik az online foglalás. A szalon jóváhagyja a kérést, a vendég a saját nyelvén kap e-mailt, és maga helyezheti át vagy mondhatja le az időpontját.</p>
+          <div class="chips"><span class="chip">Google Apps Script</span><span class="chip">Google Calendar</span><span class="chip">HU / RO</span><span class="chip">GDPR · ANPC</span><span class="chip">Cloudflare DNS</span><span class="chip">GitHub Pages</span></div>
+          <a class="btn btn-ghost" href="https://aphroditeszalon.ro/" target="_blank" rel="noopener"><span>aphroditeszalon.ro</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">aphroditeszalon.ro</span></div><img src="img/aphrodite-desk.jpg" alt="Aphrodite Szépségszalon kezdőlap" loading="lazy"></div>
+          <div class="phone"><img src="img/aphrodite-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag live" data-i18n="live">Élesben · ügyfélmunka</span>
+          <h3>Tommy's Pizza &amp; Food</h3>
+          <div class="where" data-i18n="tom_where">Székelykeresztúr · pizzéria · HU + RO</div>
+          <p class="body" data-i18n="tom_p">Az étlap egyetlen adatfájlból generálódik: árváltozásnál egy sort kell átírni, és az oldal mindkét nyelven frissül. Élő „nyitva / zárva” jelzés, kattintásra betöltődő térkép, technikai SEO (sitemap, strukturált adat, Search Console) és Cloudflare Pages kiszolgálás.</p>
+          <div class="chips"><span class="chip">Node.js generátor</span><span class="chip">JSON</span><span class="chip">SEO</span><span class="chip">Cloudflare Pages</span><span class="chip">HU / RO</span></div>
+          <a class="btn btn-ghost" href="https://tommyspizza.ro/" target="_blank" rel="noopener"><span>tommyspizza.ro</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">tommyspizza.ro</span></div><img src="img/tommys-desk.jpg" alt="Tommy's Pizza kezdőlap" loading="lazy"></div>
+          <div class="phone"><img src="img/tommys-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag live" data-i18n="live">Élesben · ügyfélmunka</span>
+          <h3>HobbyGSM</h3>
+          <div class="where" data-i18n="hob_where">Telefontartozék-webshop · Shopify · RO + HU</div>
+          <p class="body" data-i18n="hob_p">A Shopify Horizon témára saját CSS- és JavaScript-réteget építettem (az ügyfél három dizájnirányból választott), elkészült a román–magyar fordítás, a jogi oldalak (ÁSZF, elállás, adatvédelem, cookie), és bekötöttem a saját domaint.</p>
+          <div class="chips"><span class="chip">Shopify</span><span class="chip">Liquid</span><span class="chip">Shopify CLI</span><span class="chip">E-commerce</span><span class="chip">RO / HU</span></div>
+          <a class="btn btn-ghost" href="https://hobbygsm.com/" target="_blank" rel="noopener"><span>hobbygsm.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">hobbygsm.com</span></div><img src="img/hobbygsm-desk.jpg" alt="HobbyGSM webshop kezdőlap" loading="lazy"></div>
+          <div class="phone"><img src="img/hobbygsm-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag concept" data-i18n="concept">Látványterv</span>
+          <h3>Ughy Kinga · Nail Trainer</h3>
+          <div class="where" data-i18n="kin_where">Online kurzus-webshop · 6 oldal · HU + RO + EN</div>
+          <p class="body" data-i18n="kin_p">Körömépítő-kurzusok webshopjának kattintható terve: kurzuslista, termékoldal, galéria és a vásárlók zárt „Kurzusaim” felülete, belépve és kijelentkezve is bemutatva.</p>
+          <div class="chips"><span class="chip" data-i18n="c_shop">Webshop-folyamat</span><span class="chip" data-i18n="c_member">Tagsági felület</span><span class="chip">i18n</span></div>
+          <a class="btn btn-ghost" href="https://bucu135.github.io/ughy-kinga-latvanyterv/" target="_blank" rel="noopener"><span data-i18n="open">Megnyitás</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">bucu135.github.io/ughy-kinga-latvanyterv</span></div><img src="img/kinga-desk.jpg" alt="Ughy Kinga kurzus-webshop" loading="lazy"></div>
+          <div class="phone"><img src="img/kinga-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag concept" data-i18n="concept">Látványterv</span>
+          <h3>ANTderGROUND</h3>
+          <div class="where" data-i18n="ant_where">Csíkszereda · kulturális tér és kávéház</div>
+          <p class="body" data-i18n="ant_p">Koncepcióoldal nappali és éjszakai témával, a hely saját plakát-esztétikájára építve, programarchívummal. A tulajdonos a terv alapján együttműködést ajánlott.</p>
+          <div class="chips"><span class="chip" data-i18n="c_theme">Nappali / éjszakai téma</span><span class="chip" data-i18n="c_brand">Márkaarculat</span><span class="chip" data-i18n="c_prog">Programarchívum</span></div>
+          <a class="btn btn-ghost" href="https://bucu135.github.io/ant-bar-latvanyterv/" target="_blank" rel="noopener"><span data-i18n="open">Megnyitás</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">bucu135.github.io/ant-bar-latvanyterv</span></div><img src="img/antbar-desk.jpg" alt="ANTderGROUND koncepcióoldal" loading="lazy"></div>
+          <div class="phone"><img src="img/antbar-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+      <article class="work rv">
+        <div class="txt">
+          <span class="tag concept" data-i18n="concept">Látványterv</span>
+          <h3>Norbo's Grill</h3>
+          <div class="where" data-i18n="nor_where">Székelyudvarhely · grillező két helyszínnel · HU + RO + EN</div>
+          <p class="body" data-i18n="nor_p">Étteremoldal interaktív, illusztrált „tál-összerakóval”: a vendég összeállítja a saját tálját, és látja, mennyi lesz belőle.</p>
+          <div class="chips"><span class="chip" data-i18n="c_inter">Interaktív elem</span><span class="chip" data-i18n="c_illu">Illusztráció</span><span class="chip">i18n</span></div>
+          <a class="btn btn-ghost" href="https://bucu135.github.io/norbos-grill-latvanyterv/" target="_blank" rel="noopener"><span data-i18n="open">Megnyitás</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+        </div>
+        <div class="shot">
+          <div class="frame"><div class="bar"><i></i><i></i><i></i><span class="url">bucu135.github.io/norbos-grill-latvanyterv</span></div><img src="img/norbos-desk.jpg" alt="Norbo's Grill koncepcióoldal" loading="lazy"></div>
+          <div class="phone"><img src="img/norbos-mob.jpg" alt="" loading="lazy"></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick" data-i18n="t_kick">Az oldalakon túl</div>
+      <h2 data-i18n="t_h">Saját eszközök, amikkel gyorsabban dolgozom</h2>
+    </div>
+    <div class="tools">
+      <div class="tool rv">
+        <h4 data-i18n="t1_h">Ügyfélszerző adatgyűjtés</h4>
+        <p data-i18n="t1_p">Node.js és Playwright alapú gyűjtő, ami a Google Mapsből kigyűjti a weboldal nélküli vállalkozásokat. Ebből szűrhető hívólista lett több ezer céggel, amit telefonon és gépen közösen lehet jelölni.</p>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">Playwright</span><span class="chip">Lead generation</span></div>
+      </div>
+      <div class="tool rv">
+        <h4 data-i18n="t2_h">Látványterv-generátor</h4>
+        <p data-i18n="t2_p">Sablon és adatfájl, amiből egy szakma cégeinek (például 10 fogorvosi rendelőnek) személyre szabott bemutatóoldala percek alatt elkészül, saját fotókkal és működő foglaló-bemutatóval.</p>
+        <div class="chips"><span class="chip" data-i18n="c_tpl">Sablonrendszer</span><span class="chip">Outreach</span></div>
+      </div>
+      <div class="tool rv">
+        <h4 data-i18n="t3_h">Átadás előtti ellenőrzés</h4>
+        <p data-i18n="t3_p">Minden oldalt automatikusan végigfotózok asztali és telefonos nézetben, a képeket WebP-re és srcsetre optimalizálom, és csak kipróbált űrlapot vagy foglalót adok át.</p>
+        <div class="chips"><span class="chip">QA</span><span class="chip">WebP · srcset</span><span class="chip" data-i18n="c_perf">Teljesítmény</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tudas" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kick" data-i18n="s_kick">Tudás</div>
+      <h2 data-i18n="s_h">Amivel dolgozom</h2>
+    </div>
+    <div class="skills rv">
+      <div class="sk"><h4>Frontend</h4><p data-i18n="s1">HTML, CSS (grid, reszponzív elrendezés, animáció), JavaScript, többnyelvű oldalak</p></div>
+      <div class="sk"><h4 data-i18n="s2_h">Backend és automatizálás</h4><p>Node.js, Playwright, Google Apps Script, Google Calendar API</p></div>
+      <div class="sk"><h4 data-i18n="s3_h">Platformok</h4><p>Shopify (Liquid, CLI), GitHub Pages, Cloudflare (DNS, Pages), Netlify, Git</p></div>
+      <div class="sk"><h4 data-i18n="s4_h">Kereső és megfelelés</h4><p data-i18n="s4">Technikai SEO, Search Console, strukturált adat; GDPR, ANPC és SAL a román oldalakon</p></div>
+      <div class="sk"><h4 data-i18n="s5_h">Munkamód</h4><p data-i18n="s5">AI-asszisztált fejlesztés (Claude Code), közvetlen ügyfélkommunikáció, a projekt teljes lebonyolítása</p></div>
+      <div class="sk"><h4 data-i18n="s6_h">Dizájn</h4><p data-i18n="s6">Arculathoz illő tipográfia és színvilág, látványterv-irányok, képválogatás és -optimalizálás</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="how rv">
+      <h2 data-i18n="h_h">Amit egy csapatba hozok</h2>
+      <div>
+        <p data-i18n-html="h_p1">Projekteket vittem végig <strong>egyedül, a tervtől az élesítésig</strong>, közvetlenül az ügyfelekkel. Megszoktam, hogy az anyag WhatsAppon, e-mailben és Messengeren érkezik, és nekem kell rendet tenni benne.</p>
+        <p data-i18n-html="h_p2">Gyorsan dolgozom, és <strong>nem adok át olyat, amit nem próbáltam ki telefonon.</strong> Szívesen tanulok olyanoktól, akik nálam nagyobb projekteken dolgoztak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kapcsolat">
+  <div class="wrap contact">
+    <div class="rv">
+      <h2 data-i18n="c_h">Beszéljünk egy munkáról</h2>
+      <p class="lead" data-i18n="c_p">Azonnal kezdhetek. Teljes vagy részmunkaidőben, alkalmazottként vagy szerződéssel, helyben (Székelyudvarhely, Székelykeresztúr) vagy távmunkában. B kategóriás jogosítványom van.</p>
+    </div>
+    <div class="ccard rv">
+      <div class="crow"><small data-i18n="phone">Telefon</small><a href="tel:+40754755443">0754 755 443</a></div>
+      <div class="crow"><small>E-mail</small><a href="mailto:laszlobence753@gmail.com">laszlobence753@gmail.com</a></div>
+      <div class="crow"><small data-i18n="langs_l">Nyelvek</small><span data-i18n="langs">magyar (anyanyelv), angol (B2)</span></div>
+      <a class="btn btn-primary cv-link" href="cv/Laszlo-Bence-Zsolt-CV-HU.pdf" data-i18n="cta_cv">Önéletrajz letöltése</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span><b>László Bence-Zsolt</b> · <span data-i18n="role">Webfejlesztő</span></span>
+    <span data-i18n="self">Ezt az oldalt is én készítettem.</span>
+  </div>
+</footer>
+
+<script>
+var T = {
+  en: {
+    role:"Web developer", nav_work:"Work", nav_skills:"Skills", nav_contact:"Contact", cv:"CV (PDF)",
+    eyebrow:"Open to work · on-site or remote",
+    h1:"I build websites that <em>run live</em> and are used by paying clients.",
+    lead:"I'm László Bence-Zsolt, a web developer from Harghita County, Romania. I've built sites for small businesses in Transylvania from concept to launch: design, code, multiple languages, booking system, online shop, domain and SEO. <strong>Now I'm looking for a team, an agency or a company where I can do this on bigger projects.</strong>",
+    cta_work:"See the work", cta_cv:"Download CV",
+    st1:"client sites live on their own domain", st2:"personalised design previews for businesses", st3:"site languages: Hungarian, Romanian, English", st4:"custom-built booking system in production",
+    w_kick:"Work", w_h:"Three live client sites and three concepts",
+    w_p:"Every one of them opens and works, on phones too. Green means real, paid client work; blue means a design preview.",
+    live:"Live · client work", concept:"Design preview", open:"Open",
+    aph_where:"Odorheiu Secuiesc · 5 specialists · HU + RO",
+    aph_p:"A complete salon website with its own online booking. Booking runs on each specialist's Google Calendar: whoever enters their working hours becomes bookable online automatically. The salon approves each request, the guest gets an e-mail in their own language and can move or cancel the appointment themselves.",
+    tom_where:"Cristuru Secuiesc · pizzeria · HU + RO",
+    tom_p:"The menu is generated from a single data file: when a price changes, one line is edited and the site updates in both languages. Live open/closed indicator, click-to-load map, technical SEO (sitemap, structured data, Search Console), served on Cloudflare Pages.",
+    hob_where:"Phone accessories shop · Shopify · RO + HU",
+    hob_p:"I built a custom CSS and JavaScript layer on top of the Shopify Horizon theme (the client chose from three design directions), the Romanian–Hungarian translation, the legal pages (terms, returns, privacy, cookies), and connected the custom domain.",
+    kin_where:"Online course shop · 6 pages · HU + RO + EN",
+    kin_p:"Clickable design for a nail-art course shop: course list, product page, gallery and the private “My courses” area, shown both logged in and logged out.",
+    c_shop:"Shop flow", c_member:"Members area",
+    ant_where:"Miercurea Ciuc · cultural space and café",
+    ant_p:"Concept site with day and night themes, built on the venue's own poster aesthetic, with an events archive. Based on the concept, the owner offered a collaboration.",
+    c_theme:"Day / night theme", c_brand:"Brand identity", c_prog:"Events archive",
+    nor_where:"Odorheiu Secuiesc · grill with two locations · HU + RO + EN",
+    nor_p:"Restaurant site with an interactive, illustrated “platter builder”: guests put together their own platter and see how many people it feeds.",
+    c_inter:"Interactive feature", c_illu:"Illustration",
+    t_kick:"Beyond the sites", t_h:"My own tools that make me faster",
+    t1_h:"Lead-generation scraping",
+    t1_p:"A Node.js and Playwright collector that pulls businesses without a website from Google Maps. It became a filterable call list of thousands of companies, marked jointly on phone and desktop.",
+    t2_h:"Design-preview generator",
+    t2_p:"A template plus a data file that produces personalised showcase pages for a whole trade (for example 10 dental clinics) in minutes, with their own photos and a working booking demo.",
+    c_tpl:"Template system",
+    t3_h:"Pre-launch checks",
+    t3_p:"Every site is screenshotted automatically on desktop and mobile, images are optimised to WebP with srcset, and forms or bookings are only handed over once tested.",
+    c_perf:"Performance",
+    s_kick:"Skills", s_h:"What I work with",
+    s1:"HTML, CSS (grid, responsive layout, animation), JavaScript, multilingual sites",
+    s2_h:"Backend & automation", s3_h:"Platforms", s4_h:"Search & compliance",
+    s4:"Technical SEO, Search Console, structured data; GDPR, ANPC and SAL for Romanian sites",
+    s5_h:"Way of working", s5:"AI-assisted development (Claude Code), direct client communication, running the whole project",
+    s6_h:"Design", s6:"Typography and colour that fit the brand, design directions, image selection and optimisation",
+    h_h:"What I bring to a team",
+    h_p1:"I've taken projects <strong>alone, from concept to launch</strong>, working directly with clients. I'm used to material arriving over WhatsApp, e-mail and Messenger, and putting it in order myself.",
+    h_p2:"I work fast and <strong>never hand over anything I haven't tested on a phone.</strong> I'm keen to learn from people who've worked on bigger projects than I have.",
+    c_h:"Let's talk about a role",
+    c_p:"I can start right away. Full-time or part-time, employed or contract, on-site (Odorheiu Secuiesc, Cristuru Secuiesc) or remote. I hold a category B driving licence.",
+    phone:"Phone", langs_l:"Languages", langs:"Hungarian (native), English (B2)",
+    self:"I built this site too."
+  }
+};
+var HU = {};
+document.querySelectorAll('[data-i18n]').forEach(function(e){ HU[e.dataset.i18n] = e.textContent; });
+document.querySelectorAll('[data-i18n-html]').forEach(function(e){ HU[e.dataset.i18nHtml] = e.innerHTML; });
+var CV = { hu:'cv/Laszlo-Bence-Zsolt-CV-HU.pdf', en:'cv/Laszlo-Bence-Zsolt-CV-EN.pdf' };
+function setLang(l){
+  var d = l === 'hu' ? HU : T[l];
+  document.querySelectorAll('[data-i18n]').forEach(function(e){ var v = d[e.dataset.i18n]; if(v != null) e.textContent = v; });
+  document.querySelectorAll('[data-i18n-html]').forEach(function(e){ var v = d[e.dataset.i18nHtml]; if(v != null) e.innerHTML = v; });
+  document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.lang === l); });
+  document.querySelectorAll('.cv-link').forEach(function(a){ a.href = CV[l]; });
+  document.documentElement.lang = l;
+  try{ localStorage.setItem('pf-lang', l); }catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+var q = (location.hash.match(/lang=(hu|en)/)||[])[1], saved;
+try{ saved = localStorage.getItem('pf-lang'); }catch(e){}
+var start = q || saved || ((/^(hu|ro)/.test(navigator.language||'') ? 'hu' : 'en'));
+if(start === 'en') setLang('en');
+
+(function(){
+  var els = document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(en){ en.forEach(function(x){ x.target.classList.toggle('in', x.isIntersecting); }); }, { threshold:.08 });
+  els.forEach(function(e){ io.observe(e); });
+})();
+</script>
+</body>
+</html>
